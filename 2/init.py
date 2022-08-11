@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 print("\x1b[2)\x1b[1;1H")
-print("hello fuckin world!!")
 os.chdir(r'C:\Users\Guilherme Hachimine\Desktop\IFTM\IA\Trabalhos\IA-Trabalhos\2')
 x=np.loadtxt('x.txt')
 (amostras,entradas)=np.shape(x)
@@ -38,7 +37,7 @@ while erro>errotolerado:
      ciclo+=1
      erro = 0
      for i in range(amostras):
-          xaux = x[1,:]
+          xaux = x[i,:]
           for m in range(numclasses):
                soma=0
                for n in range(entradas):
