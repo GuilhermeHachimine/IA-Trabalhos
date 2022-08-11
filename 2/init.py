@@ -16,6 +16,9 @@ alfa=0.01
 errotolerado=0.1
 v=np.zeros((entradas,numclasses))
 v0=np.zeros((numclasses))
+yin=np.zeros((numclasses,1))
+y=np.zeros((numclasses,1))
+
 for i in range(entradas):
      for j in range(numclasses):
           v[i][j]=rd.uniform(-0.1,0.1)
@@ -27,8 +30,6 @@ for j in range(numclasses):
 vetor1=[]
 vetor2=[]
 
-yin=np.zeros((numclasses,1))
-y=np.zeros((numclasses,1))
 
 erro=10
 ciclo=0
@@ -58,7 +59,7 @@ while erro>errotolerado:
                     v[m][n]=vanterior[m][n]+alfa*(t[n][i]-y[n])*xaux[m]
           v0anterior=v0
           for j in range(numclasses):
-               v0=v0anterior[j]+alfa*(t[j][i]-y[j])
+               v0[j]=v0anterior[j]+alfa*(t[j][i]-y[j])
      vetor1.append(ciclo)
      vetor2.append(erro)
 
