@@ -29,5 +29,41 @@ vetor2=[]
 yin=np.zeros((numclasses,1))
 y=np.zeros((numclasses,1))
 
+erro=10
+ciclo=0
+
+while erro>errotolerado:
+     ciclo+=1
+     erro = 0
+     for i in range(amostras):
+          xaux=[1,:]
+          for m in range(numclasses):
+               soma=0
+               for n in range(entradas):
+                    soma = soma+xaux[n]*v[n][m]
+               yin[m]=soma+v0[m]
+          for j in range(numclasses):
+               if yin[j]>= limiar:
+                    y[j]=1.0
+               else:
+                    y[j]=-1.0
+
+          for j in range(numclasses):
+               erro = erro+0.5*((t[j][i] - y[j]**2))
+          vanterior=v
+
+          for m in range(entradas):
+               for n in range(numclasses):
+                    v[m][n]=vanterior[m][n]+alfa*(t[n][i]-y[n])*xaux[m]
+          v0anterior=v0
+          for j in range(numclasses):
+               v0=v0anterior[j]+alfa*(t[j][i]-y[j])
+     vetor1.append(ciclo)
+     vetor2.append(erro)
+
+     plt.scatter(vetor1, vetor2,marker='*',color='#8cc63f')
+     plt.xlabel('ciclo')
+     plt.ylabel('erro')
+     plt.show()
 
 
