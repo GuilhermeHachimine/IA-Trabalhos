@@ -35,7 +35,7 @@ amostras_teste = dados_treinamento.flow_from_directory('teste',target_size = (64
  class_mode = 'categorical')
 
 classificador.fit(amostras_treinamento,
-steps_per_epoch = 2000,
-epochs = 5,
+steps_per_epoch = 4,
+epochs = 7,
 validation_data = amostras_teste,
-validation_steps = 576)
+validation_steps = 1000)
