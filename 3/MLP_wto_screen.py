@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 
 print("\x1b[23x1b[1;1H")
 
-# Declara��o de vari�veis
+# Declaracao de variaveis
 entradas = 1  # quantidade de entradas
-neur = 200  # quantidade de neur�nios na camada intermedi�ria
-limiar = 0.0  # valor para a limiariza��o
+neur = 200  # quantidade de neuronios na camada intermedi�ria
+limiar = 0.0  # valor para a limiarizacao
 alfa = 0.005  # taxa de aprendizagem
 # at� quando o treino deve ocorrer (erro aceito para um bom treinamento)
-errotolerado = 0.25
+errotolerado = 0.31
 listaciclo = []  # lista de ciclos do treinamento
 listaerro = []  # lista dos erros do treinamento
 xmin = -1
@@ -27,7 +27,6 @@ xmax = 1
 npontos = 50
 
 # -------------------------------TELA-------------------------------
-
 
 
 # -------------------------------REDE MLP-------------------------------
@@ -45,9 +44,9 @@ for i in range(amostras):
     t[0][i] = t1[i]
 (vsai, amostras) = np.shape(t)
 
-# Gerando os pesos sin�pticos aleatoriamente (entrada - intermedi�ria)
+# Gerando os pesos sinapticos aleatoriamente (entrada - intermediaria)
 vanterior = np.zeros((entradas, neur))
-aleatorio = 0.8
+aleatorio = 1
 for i in range(entradas):
     for j in range(neur):
         vanterior[i][j] = rd.uniform(-aleatorio, aleatorio)
@@ -65,7 +64,7 @@ w0anterior = np.zeros((1, vsai))
 for j in range(vsai):
     w0anterior[0][j] = rd.uniform(-aleatorio, aleatorio)
 
-# Gerando matrizes de atualiza��o de pesos e valores de sa�da da rede
+# Gerando matrizes de atualizacao de pesos e valores de saida da rede
 vnovo = np.zeros((entradas, neur))
 v0novo = np.zeros((1, neur))
 wnovo = np.zeros((neur, vsai))
@@ -153,4 +152,3 @@ while errotolerado < errototal:
     plt.plot(x, t2, color='blue')
 
 plt.show()
-

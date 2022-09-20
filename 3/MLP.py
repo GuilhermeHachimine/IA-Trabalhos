@@ -78,7 +78,7 @@ class Tela:
 
                 # Gerando os pesos sin�pticos aleatoriamente (entrada - intermedi�ria)
                 vanterior = np.zeros((entradas, neur))
-                aleatorio = 1
+                aleatorio = 0.5
                 for i in range(entradas):
                     for j in range(neur):
                         vanterior[i][j] = rd.uniform(-aleatorio, aleatorio)
@@ -88,7 +88,7 @@ class Tela:
 
                 # Gerando os pesos sin�pticos aleatoriamente (intermedi�ria - sa�da)
                 wanterior = np.zeros((neur, vsai))
-                aleatorio = 0.2
+                aleatorio = 0.5
                 for i in range(neur):
                     for j in range(vsai):
                         wanterior[i][j] = rd.uniform(-aleatorio, aleatorio)
