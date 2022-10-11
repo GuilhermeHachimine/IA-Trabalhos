@@ -1,5 +1,6 @@
 import numpy as np
 import random as rd
+import matplotlib.pyplot as plt
 
 tamCromossomo = 30
 prob_crossover = 0.95
@@ -107,6 +108,32 @@ while (geracoes <= num_generations):
 
     indice = Aptidao.argmax()
     elem = individuo[indice]
-    print(elem)
+    if (geracoes > 0):
+        if (elem > melhoraptidao):
+            melhoraptidao = elem
+            indicemelhoraptidao = indice
+            melhorx = individuo[indice]
+            y = -abs(melhorx*np.sin(np.sqrt(abs(melhorx))))
+            melhorgeracao = geracoes
+            populacao = novageracao
+    else:
+        melhoraptidao = elem
+        indicemelhoraptidao = indice
+        melhorx = individuo[indice]
+        y = -abs(melhorx*np.sin(np.sqrt(abs(melhorx))))
+        melhorgeracao = 0
+        populacao = p
     p = novageracao
     geracoes += 1
+    vetorx = np.linspace(418, 422, 100)
+    vetory = -abs(vetorx*np.sin(np.sqrt(vetorx)))
+    plt.plot(vetorx, vetory)
+    plt.plot(melhorx, y, 'o', color='red')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.show(block=False)
+    plt.pause(0.05)
+
+print(melhorgeracao)
+print(melhorx)
+print(y)
